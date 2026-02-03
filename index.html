@@ -13,18 +13,18 @@
     <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="page-container">
     <header class="navbar bg-base-200">
       <div class="flex-1">
         <h1 class="text-2xl font-bold">🎮 Jeu du Pendu</h1>
       </div>
       <div class="flex-none gap-2">
         <div class="stats shadow">
-          <div class="stat py-2 px-4">
+          <div class="stat stat-compact">
             <div class="stat-title">Erreurs</div>
             <div class="stat-value text-2xl" id="errors">0/5</div>
           </div>
-          <div class="stat py-2 px-4">
+          <div class="stat stat-compact">
             <div class="stat-title">Record</div>
             <div class="stat-value text-2xl" id="record">-</div>
           </div>
@@ -32,10 +32,10 @@
       </div>
     </header>
 
-    <main class="flex-1 container mx-auto px-4 py-8">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 h-full">
-        <div class="lg:col-span-2 flex flex-col justify-between">
-          <div class="flex justify-center items-center flex-1">
+    <main class="main-grid">
+      <div class="game-layout">
+        <div class="game-area">
+          <div class="hangman-container">
             <svg
               id="hangman"
               width="300"
@@ -73,11 +73,8 @@
             </svg>
           </div>
 
-          <div class="flex justify-center items-end pt-12">
-            <div
-              id="word-display"
-              class="flex gap-3 text-5xl font-bold tracking-wider"
-            >
+          <div class="word-container">
+            <div id="word-display" class="word-display">
               <span class="letter-placeholder"></span>
               <span class="letter-placeholder"></span>
               <span class="letter-placeholder"></span>
@@ -87,18 +84,13 @@
           </div>
         </div>
 
-        <div class="flex flex-col gap-4">
+        <div class="sidebar">
           <div class="card bg-base-200 shadow-xl">
             <div class="card-body">
               <h2 class="card-title">Lettres jouées</h2>
               <div class="text-center">
-                <p class="text-sm opacity-70 mb-2">
-                  Tapez une lettre au clavier
-                </p>
-                <div
-                  id="letters-used"
-                  class="flex flex-wrap gap-2 justify-center min-h-[100px]"
-                ></div>
+                <p class="hint-text">Tapez une lettre au clavier</p>
+                <div id="letters-used" class="letters-container"></div>
               </div>
             </div>
           </div>
